@@ -37,6 +37,12 @@
                         <TextBlock VerticalAlignment="Center" Text="Інформаційна сторінка"/>
                     </StackPanel>
                 </Button>
+                <Button Command="{Binding ViewCryptocurrencies}" Style="{DynamicResource button}">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Margin="10" Kind="ListStatus"/>
+                        <TextBlock VerticalAlignment="Center" Text="Криптовалюти"/>
+                    </StackPanel>
+                </Button>
                 <Button Command="{Binding ChangeTheme}" Style="{DynamicResource button}">
                     <StackPanel Orientation="Horizontal">
                         <icon:PackIconMaterial Margin="10" Style="{DynamicResource icon_button_menu}"/>

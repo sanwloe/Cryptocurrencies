@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Cryptocurrencies.ViewModels
@@ -22,18 +23,23 @@ namespace Cryptocurrencies.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
         public ICommand? ViewDashboard { get; set; }
         public ICommand? ChangeTheme { get; set; }
+        public ICommand? ViewCryptocurrencies { get; set; }
         private void Initialize()
         {
             ViewDashboard = new RelayCommand(GoToDashboard);
             ChangeTheme = new RelayCommand(DoChangeTheme);
+            ViewCryptocurrencies = new RelayCommand(GoToListCryptocurrencies);
+            DoChangeTheme();
+            
         }
         private void GoToDashboard()
         {
-            var window = ResourceManager.GetMainWindow();
-            if(window.framecontent.Content as Dashboard == null) 
-            {
-                window.framecontent.Content = new Dashboard();
-            }
+            ViewNewPage(new Dashboard());
+
+        }
+        private void GoToListCryptocurrencies()
+        {
+            ViewNewPage(new Views.Cryptocurrencies());
         }
         private void DoChangeTheme()
         {
@@ -44,8 +50,28 @@ namespace Cryptocurrencies.ViewModels
             }
             else
             {
-                ModernWpf.ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
                 MyThemeManager.SetDarkTheme();
+            }
+        }
+        private static bool CheckFrame(Object obj)
+        {
+            var window = ResourceManager.GetMainWindow();
+            if(window.framecontent.Content.GetType().Equals(obj))
+            {
+                return true;
+            }
+            else 
+            { 
+                return false; 
+            }           
+        }
+        private void ViewNewPage(Page page)
+        {
+            var window = ResourceManager.GetMainWindow();
+            if (!CheckFrame(page.GetType()))
+            {
+                window.framecontent.Content = page;
             }
         }
     }

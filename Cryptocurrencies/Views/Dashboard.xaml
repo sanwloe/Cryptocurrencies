@@ -22,7 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Margin="50" Style="{DynamicResource textblock_header}" Foreground="White" Text="Dashboard"/>
+        <TextBlock Style="{DynamicResource textblock_header}" Text="Dashboard"/>
 
         <DataGrid ItemsSource="{Binding CoinCaps}" Style="{DynamicResource main_datagrid}" Grid.Row="1">
             <DataGrid.Columns>

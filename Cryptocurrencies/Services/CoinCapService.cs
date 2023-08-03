@@ -19,7 +19,7 @@ namespace Cryptocurrencies.Services
         {
             _coinCapService = new CoinCapHttpService();
         }
-        public async Task<CryptoCurrencyCoinCap[]> GetCryptoCurrencies()
+        public async Task<CryptoCurrencyCoinCap[]> GetCryptoCurrenciesAsync()
         {
             return await _coinCapService.GetCryptoCurrencies();
         }

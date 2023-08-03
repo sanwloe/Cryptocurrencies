@@ -1,0 +1,58 @@
+﻿<Page x:Class="Cryptocurrencies.Views.Cryptocurrencies"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cryptocurrencies.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Cryptocurrencies"
+      xmlns:viewmodels="clr-namespace:Cryptocurrencies.ViewModels">
+
+    <Page.Resources>
+        <viewmodels:CryptocurrenciesViewModel x:Key="vm"/>
+    </Page.Resources>
+    <Page.DataContext>
+        <Binding Source="{StaticResource vm}"/>
+    </Page.DataContext>
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Style="{DynamicResource textblock_header}" Text="Криптовалюти"/>
+
+        <DataGrid ItemsSource="{Binding CoinCaps}" Grid.Row="1" Style="{DynamicResource main_datagrid}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Криптовалюта"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding PriceUsd}" Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Ціна"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ChangePercent24Hr}" Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Зміна"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding VWap24Hr}" Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Середня ціна за 24 годин"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding VolumeUsd24Hr}" Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Об'єм продажів за 24 годин"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
