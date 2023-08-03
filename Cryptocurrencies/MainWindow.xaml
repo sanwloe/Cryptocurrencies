@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cryptocurrencies"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Cryptocurrencies" Height="450" Width="800"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:views="clr-namespace:Cryptocurrencies.Views"
+        xmlns:viewmodels="clr-namespace:Cryptocurrencies.ViewModels">
+    
+    <Window.Resources>
+        <viewmodels:MainWindowViewModel x:Key="vm"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Source="{StaticResource vm}"/>
+    </Window.DataContext>
+    
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ui:Frame Name="framecontent" Margin="10" Grid.Column="1">
+            <ui:Frame.Content>
+                <views:Dashboard/>
+            </ui:Frame.Content>
+        </ui:Frame>
+        <Border Background="{DynamicResource bordercolor}" Grid.Column="0" CornerRadius="0 35 35 0">
+            <StackPanel  Margin="0 30 0 30" >
+                <Button Command="{Binding ViewDashboard}" Style="{DynamicResource button}">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Margin="10" Kind="ViewDashboard"/>
+                        <TextBlock VerticalAlignment="Center" Text="Інформаційна сторінка"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding ChangeTheme}" Style="{DynamicResource button}">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Margin="10" Style="{DynamicResource icon_button_menu}"/>
+                        <TextBlock VerticalAlignment="Center" Text="Змінити тему"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

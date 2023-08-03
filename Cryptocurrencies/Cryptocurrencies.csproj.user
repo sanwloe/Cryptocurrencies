@@ -7,10 +7,21 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\Dashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\DarkStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\LightStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dashboard.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
