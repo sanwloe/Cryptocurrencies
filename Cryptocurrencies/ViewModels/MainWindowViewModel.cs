@@ -29,13 +29,12 @@ namespace Cryptocurrencies.ViewModels
             ViewDashboard = new RelayCommand(GoToDashboard);
             ChangeTheme = new RelayCommand(DoChangeTheme);
             ViewCryptocurrencies = new RelayCommand(GoToListCryptocurrencies);
-            DoChangeTheme();
+            LoadTheme();
             
         }
         private void GoToDashboard()
         {
             ViewNewPage(new Dashboard());
-
         }
         private void GoToListCryptocurrencies()
         {
@@ -54,6 +53,18 @@ namespace Cryptocurrencies.ViewModels
                 MyThemeManager.SetDarkTheme();
             }
         }
+        private void LoadTheme()
+        {
+            if (ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark)
+            {            
+                MyThemeManager.SetDarkTheme();
+            }
+            else
+            {
+                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
+                MyThemeManager.SetLightTheme();
+            }
+        }
         private static bool CheckFrame(Object obj)
         {
             var window = ResourceManager.GetMainWindow();
@@ -66,7 +77,7 @@ namespace Cryptocurrencies.ViewModels
                 return false; 
             }           
         }
-        private void ViewNewPage(Page page)
+        private static void ViewNewPage(Page page)
         {
             var window = ResourceManager.GetMainWindow();
             if (!CheckFrame(page.GetType()))
