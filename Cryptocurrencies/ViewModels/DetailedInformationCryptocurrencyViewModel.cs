@@ -29,7 +29,7 @@ namespace Cryptocurrencies.ViewModels
             Coin = coin;
             Initialize();
         }
-        CryptocurrencyCoinCap Coin { get; }
+        public CryptocurrencyCoinCap Coin { get; }
         private ObservableCollection<CryptocurrencyExchangeCoinCap> _markets = new();
         public ObservableCollection<CryptocurrencyExchangeCoinCap> Markets
         {

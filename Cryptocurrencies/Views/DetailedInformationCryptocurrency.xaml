@@ -23,18 +23,37 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <lvc:CartesianChart Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Series="{Binding Series}">
+        <StackPanel MinHeight="50" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel Style="{DynamicResource stackinfocryptocurrency}">
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency_header}" Text="Ціна : "/>
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency}" Text="{Binding Coin.PriceUsd}"/>
+            </StackPanel>
+            <StackPanel Style="{DynamicResource stackinfocryptocurrency}">
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency_header}" Text="Зміна : "/>
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency}" Text="{Binding Coin.ChangePercent24Hr}"/>
+            </StackPanel>
+            <StackPanel Style="{DynamicResource stackinfocryptocurrency}">
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency_header}" Text="Середня ціна(24г.) : "/>
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency}" Text="{Binding Coin.VWap24Hr}"/>
+            </StackPanel>
+            <StackPanel Style="{DynamicResource stackinfocryptocurrency}">
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency_header}" Text="Об'єм продажів(24г.) : "/>
+                <TextBlock Style="{DynamicResource textblock_infocryptocurrency}" Text="{Binding Coin.VolumeUsd24Hr}"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <lvc:CartesianChart Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Series="{Binding Series}" Style="{DynamicResource chart}">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis LabelFormatter="{Binding StringFormatter}"/>
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
      
-        <DataGrid ItemsSource="{Binding Markets}" Margin="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource main_datagrid}">
+        <DataGrid MaxHeight="300" ItemsSource="{Binding Markets}" Margin="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource main_datagrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Binding="{Binding ExchangeId}">
                     <DataGridTextColumn.Header>

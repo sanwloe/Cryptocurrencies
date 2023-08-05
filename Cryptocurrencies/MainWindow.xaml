@@ -39,7 +39,7 @@
                 </Button>
                 <Button Command="{Binding ViewCryptocurrencies}" Style="{DynamicResource button}">
                     <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Margin="10" Kind="ListStatus"/>
+                        <icon:PackIconMaterial Margin="10" Kind="Bitcoin"/>
                         <TextBlock VerticalAlignment="Center" Text="Криптовалюти"/>
                     </StackPanel>
                 </Button>

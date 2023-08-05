@@ -6,8 +6,28 @@
 
     <SolidColorBrush x:Key="bordercolor" Color="#14161A"/>
 
+    <Style x:Key="textblock_infocryptocurrency_header" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="textblock_infocryptocurrency" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Margin" Value="10 0 10 0"/>
+    </Style>
+
+    <Style x:Key="stackinfocryptocurrency" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Margin" Value="0 20 0 -50"/>
+    </Style>
+
     <Style x:Key="chart" TargetType="lvc:CartesianChart">
-        <Setter Property="Margin" Value="20"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Zoom" Value="Xy"/>
+        <Setter Property="ZoomingSpeed" Value="1"/>
     </Style>
     
     <Style x:Key="main_datagrid" TargetType="DataGrid">
