@@ -21,11 +21,11 @@ namespace Cryptocurrencies.ViewModels
         {
             var service = new CoinCapService();
             var result = await service.GetCryptoCurrenciesAsync();
-            CoinCaps = new ObservableCollection<CryptoCurrencyCoinCap>(result.Take(10));
+            CoinCaps = new ObservableCollection<CryptocurrencyCoinCap>(result.Take(10));
         }
         public event PropertyChangedEventHandler? PropertyChanged;
-        private ObservableCollection<CryptoCurrencyCoinCap> _coinCaps = new();
-        public ObservableCollection<CryptoCurrencyCoinCap> CoinCaps
+        private ObservableCollection<CryptocurrencyCoinCap> _coinCaps = new();
+        public ObservableCollection<CryptocurrencyCoinCap> CoinCaps
         {
             get
             {

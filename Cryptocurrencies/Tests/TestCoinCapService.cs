@@ -1,4 +1,5 @@
-﻿using Cryptocurrencies.Models;
+﻿using Cryptocurrencies.Interfaces;
+using Cryptocurrencies.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace Cryptocurrencies.Tests
 {
-    public class TestCoinCapService
+    public class TestCoinCapService : ICoinCapService
     {
-        public CryptoCurrencyCoinCap[] GetCryptoCurrencies()
+        public async Task<CryptocurrencyCoinCap[]> GetCryptocurrencies()
         {
-            return new CryptoCurrencyCoinCap[]
+            return await Task.Run(() =>
             {
-                new CryptoCurrencyCoinCap
+                return new CryptocurrencyCoinCap[]
+                {
+                    new CryptocurrencyCoinCap
                 {
                     Id = "1",
                     ChangePercent24Hr = 1,
@@ -27,7 +30,7 @@ namespace Cryptocurrencies.Tests
                     VolumeUsd24Hr = 100000,
                     VWap24Hr = 100
                 },
-                new CryptoCurrencyCoinCap
+                new CryptocurrencyCoinCap
                 {
                     Id = "2",
                     ChangePercent24Hr = 2,
@@ -41,7 +44,7 @@ namespace Cryptocurrencies.Tests
                     VolumeUsd24Hr = 100000,
                     VWap24Hr = 100
                 },
-                new CryptoCurrencyCoinCap
+                new CryptocurrencyCoinCap
                 {
                     Id = "3",
                     ChangePercent24Hr = -2,
@@ -55,7 +58,18 @@ namespace Cryptocurrencies.Tests
                     VolumeUsd24Hr = 10000000,
                     VWap24Hr = 101
                 }
-            };
+                };
+            });
+        }
+
+        public Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrency(string cryptocurrency, string? interval)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CryptocurrencyExchangeCoinCap[]> GetMarkets(string cryptocurrency)
+        {
+            throw new NotImplementedException();
         }
     }
 }

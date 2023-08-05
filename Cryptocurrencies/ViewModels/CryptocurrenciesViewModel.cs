@@ -1,4 +1,6 @@
-﻿using Cryptocurrencies.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using Cryptocurrencies.Managers;
+using Cryptocurrencies.Models;
 using Cryptocurrencies.Services;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Cryptocurrencies.ViewModels
 {
@@ -16,9 +19,10 @@ namespace Cryptocurrencies.ViewModels
         { 
             Initialize();
         }
+        public ICommand? ViewInfoCryptocurrency { get; set; }
         public event PropertyChangedEventHandler? PropertyChanged;
-        private ObservableCollection<CryptoCurrencyCoinCap> _coinCaps = new();
-        public ObservableCollection<CryptoCurrencyCoinCap> CoinCaps 
+        private ObservableCollection<CryptocurrencyCoinCap> _coinCaps = new();
+        public ObservableCollection<CryptocurrencyCoinCap> CoinCaps 
         {
             get
             {
@@ -36,9 +40,16 @@ namespace Cryptocurrencies.ViewModels
         }
         private async void Initialize()
         {
-            var service = new CoinCapService();
-            var result = await service.GetCryptoCurrenciesAsync();
-            CoinCaps = new ObservableCollection<CryptoCurrencyCoinCap>(result);
+            ViewInfoCryptocurrency = new RelayCommand<CryptocurrencyCoinCap>(GoToDetailedInformationCryptocurrency);
+            var service = new CoinCapService();;
+            CoinCaps = new(await service.GetCryptoCurrenciesAsync());
+        }
+        private void GoToDetailedInformationCryptocurrency(CryptocurrencyCoinCap? coin)
+        {
+            if(coin != null) 
+            {
+                _ = new DetailedInformationCryptocurrencyViewModel(coin);
+            }          
         }
         private void OnPropertyChanged(string propertyName)
         {

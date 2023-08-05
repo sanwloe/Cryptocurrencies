@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Cryptocurrencies.Managers
 {
@@ -30,6 +31,11 @@ namespace Cryptocurrencies.Managers
                 Source = new Uri(path,UriKind.RelativeOrAbsolute)
             };
             window.Resources.MergedDictionaries.Add(resource);
+        }
+        public static void ChangePage(Page page)
+        {
+            var window = GetMainWindow();
+            window.framecontent.Content = page;
         }
     }
 }

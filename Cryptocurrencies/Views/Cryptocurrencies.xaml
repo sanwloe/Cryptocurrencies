@@ -25,7 +25,7 @@
 
         <TextBlock Grid.Row="0" Style="{DynamicResource textblock_header}" Text="Криптовалюти"/>
 
-        <DataGrid ItemsSource="{Binding CoinCaps}" Grid.Row="1" Style="{DynamicResource main_datagrid}">
+        <DataGrid x:Name="datagrid" ItemsSource="{Binding CoinCaps}" Grid.Row="1" Style="{DynamicResource main_datagrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Width="*">
                     <DataGridTextColumn.Header>
@@ -53,6 +53,9 @@
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
             </DataGrid.Columns>
+            <DataGrid.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding ViewInfoCryptocurrency}" CommandParameter="{Binding SelectedItem,ElementName=datagrid}"/>
+            </DataGrid.InputBindings>
         </DataGrid>
     </Grid>
 </Page>

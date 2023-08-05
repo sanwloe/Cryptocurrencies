@@ -13,14 +13,36 @@ namespace Cryptocurrencies.Services
 {
     public class CoinCapHttpService : ICoinCapService
     {
-        public async Task<CryptoCurrencyCoinCap[]> GetCryptoCurrencies()
+        public async Task<CryptocurrencyCoinCap[]> GetCryptocurrencies()
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             var response = await client.GetAsync("https://api.coincap.io/v2/assets");
-            var result = await GetData<CryptoCurrencyCoinCap>(response);
+            var result = await GetData<CryptocurrencyCoinCap>(response);
             return result;
         }
-        private async Task<T[]> GetData<T>(HttpResponseMessage response)
+        public async Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrency(string cryptocurrency,string? interval)
+        {
+            HttpClient client = new();
+            HttpResponseMessage response;
+            if(string.IsNullOrEmpty(interval)) 
+            {
+                response = await client.GetAsync($"https://api.coincap.io/v2/assets/{cryptocurrency}/history?interval=d1");
+            }
+            else
+            {
+                response = await client.GetAsync($"https://api.coincap.io/v2/assets/{cryptocurrency}/history?interval={interval}");
+            }
+            var result = await GetData<InfoCryptocurrencyCoinCap>(response);
+            return result;     
+        }
+        public async Task<CryptocurrencyExchangeCoinCap[]> GetMarkets(string cryptocurrency)
+        {
+            HttpClient client = new();
+            var response = await client.GetAsync($"https://api.coincap.io/v2/assets/{cryptocurrency}/markets");
+            var result = await GetData<CryptocurrencyExchangeCoinCap>(response);
+            return result;
+        }
+        private static async Task<T[]> GetData<T>(HttpResponseMessage response)
         {
             var content = await response.Content.ReadAsStringAsync();
             JObject json = JObject.Parse(content);

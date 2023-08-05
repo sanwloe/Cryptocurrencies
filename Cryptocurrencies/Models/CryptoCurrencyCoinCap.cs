@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cryptocurrencies.Models
 {
-    public class CryptoCurrencyCoinCap
+    public class CryptocurrencyCoinCap
     {
         public string Id { get; set; } = string.Empty;
         public int Rank { get; set; }
