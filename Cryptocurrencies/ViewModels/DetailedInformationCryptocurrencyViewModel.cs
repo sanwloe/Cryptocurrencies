@@ -70,7 +70,7 @@ namespace Cryptocurrencies.ViewModels
         private async void Initialize()
         {
             CoinCapService coinCapService = new();           
-            Markets = new(await coinCapService.GetMarkets(Coin.Id));
+            Markets = new(await coinCapService.GetMarketsAsync(Coin.Id));
             InitializeChart();
             InitializeMarkets();
             View();
@@ -78,7 +78,7 @@ namespace Cryptocurrencies.ViewModels
         private async void InitializeChart()
         {
             CoinCapService coinCapService = new();
-            var info = (await coinCapService.GetInfoCryptocurrency(Coin.Id, "h12")).TakeLast(30);           
+            var info = (await coinCapService.GetInfoCryptocurrencyAsync(Coin.Id, "h12")).TakeLast(30);           
             var values = new ChartValues<DateTimePoint>();
             foreach (var item in info)
             {
@@ -95,7 +95,7 @@ namespace Cryptocurrencies.ViewModels
         private async void InitializeMarkets()
         {
             CoinCapService coinCapService = new();
-            Markets = new(await coinCapService.GetMarkets(Coin.Id));
+            Markets = new(await coinCapService.GetMarketsAsync(Coin.Id));
         }
         private void View()
         {

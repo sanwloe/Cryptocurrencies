@@ -9,8 +9,8 @@ namespace Cryptocurrencies.Interfaces
 {
     public interface ICoinCapService
     {
-        public Task<CryptocurrencyCoinCap[]> GetCryptocurrencies();
-        public Task<CryptocurrencyExchangeCoinCap[]> GetMarkets(string cryptocurrency);
-        public Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrency(string cryptocurrency, string? interval);
+        public Task<CryptocurrencyCoinCap[]> GetCryptocurrenciesAsync();
+        public Task<CryptocurrencyExchangeCoinCap[]> GetMarketsAsync(string cryptocurrency);
+        public Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrencyAsync(string cryptocurrency, string? interval);
     }
 }

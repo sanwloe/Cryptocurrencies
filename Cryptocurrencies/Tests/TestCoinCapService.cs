@@ -10,7 +10,7 @@ namespace Cryptocurrencies.Tests
 {
     public class TestCoinCapService : ICoinCapService
     {
-        public async Task<CryptocurrencyCoinCap[]> GetCryptocurrencies()
+        public async Task<CryptocurrencyCoinCap[]> GetCryptocurrenciesAsync()
         {
             return await Task.Run(() =>
             {
@@ -62,14 +62,76 @@ namespace Cryptocurrencies.Tests
             });
         }
 
-        public Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrency(string cryptocurrency, string? interval)
+        public async Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrencyAsync(string cryptocurrency, string? interval)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() =>
+            {
+                return new InfoCryptocurrencyCoinCap[]
+                {
+                    new InfoCryptocurrencyCoinCap
+                    {
+                        Date = DateTime.Now,
+                        PriceUsd = 1000,
+                        Time = 1
+                    },
+                    new InfoCryptocurrencyCoinCap
+                    {
+                        Date = DateTime.Now,
+                        PriceUsd = 1000,
+                        Time = 1
+                    },
+                    new InfoCryptocurrencyCoinCap
+                    {
+                        Date = DateTime.Now,
+                        PriceUsd = 1000,
+                        Time = 1
+                    }
+                };
+            });
         }
 
-        public Task<CryptocurrencyExchangeCoinCap[]> GetMarkets(string cryptocurrency)
+        public async Task<CryptocurrencyExchangeCoinCap[]> GetMarketsAsync(string cryptocurrency)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() =>
+            {
+                return new CryptocurrencyExchangeCoinCap[]
+                {
+                    new CryptocurrencyExchangeCoinCap
+                    {
+                        BaseId = "1",
+                        BaseSymbol = "btc",
+                        ExchangeId = "1",
+                        PriceUsd = 30000,
+                        QuoteId = "1",
+                        QuoteSymbol = "1",
+                        VolumePercent = 1,
+                        VolumeUsd24Hr = 100000000
+                    },
+                    new CryptocurrencyExchangeCoinCap
+                    {
+                        BaseId = "2",
+                        BaseSymbol = "eth",
+                        ExchangeId = "2",
+                        PriceUsd = 3000,
+                        QuoteId = "2",
+                        QuoteSymbol = "2",
+                        VolumePercent = 2,
+                        VolumeUsd24Hr = 250000000
+                    },
+                    new CryptocurrencyExchangeCoinCap
+                    {
+                        BaseId = "3",
+                        BaseSymbol = "doge",
+                        ExchangeId = "3",
+                        PriceUsd = 3,
+                        QuoteId = "3",
+                        QuoteSymbol = "3",
+                        VolumePercent = 3,
+                        VolumeUsd24Hr = 3550000000
+                    }
+                };
+            });
+
         }
     }
 }

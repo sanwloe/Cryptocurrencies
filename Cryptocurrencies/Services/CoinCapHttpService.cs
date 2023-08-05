@@ -13,14 +13,14 @@ namespace Cryptocurrencies.Services
 {
     public class CoinCapHttpService : ICoinCapService
     {
-        public async Task<CryptocurrencyCoinCap[]> GetCryptocurrencies()
+        public async Task<CryptocurrencyCoinCap[]> GetCryptocurrenciesAsync()
         {
             HttpClient client = new();
             var response = await client.GetAsync("https://api.coincap.io/v2/assets");
             var result = await GetData<CryptocurrencyCoinCap>(response);
             return result;
         }
-        public async Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrency(string cryptocurrency,string? interval)
+        public async Task<InfoCryptocurrencyCoinCap[]> GetInfoAboutCryptocurrencyAsync(string cryptocurrency,string? interval)
         {
             HttpClient client = new();
             HttpResponseMessage response;
@@ -35,7 +35,7 @@ namespace Cryptocurrencies.Services
             var result = await GetData<InfoCryptocurrencyCoinCap>(response);
             return result;     
         }
-        public async Task<CryptocurrencyExchangeCoinCap[]> GetMarkets(string cryptocurrency)
+        public async Task<CryptocurrencyExchangeCoinCap[]> GetMarketsAsync(string cryptocurrency)
         {
             HttpClient client = new();
             var response = await client.GetAsync($"https://api.coincap.io/v2/assets/{cryptocurrency}/markets");

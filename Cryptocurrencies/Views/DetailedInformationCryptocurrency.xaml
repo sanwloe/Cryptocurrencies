@@ -16,19 +16,15 @@
     <Page.DataContext>
         <Binding Source="{StaticResource vm}"/>
     </Page.DataContext>
-    
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel MinHeight="50" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1">
             <StackPanel Style="{DynamicResource stackinfocryptocurrency}">
                 <TextBlock Style="{DynamicResource textblock_infocryptocurrency_header}" Text="Ціна : "/>
                 <TextBlock Style="{DynamicResource textblock_infocryptocurrency}" Text="{Binding Coin.PriceUsd}"/>
@@ -47,13 +43,13 @@
             </StackPanel>
         </StackPanel>
         
-        <lvc:CartesianChart Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Series="{Binding Series}" Style="{DynamicResource chart}">
+        <lvc:CartesianChart Grid.Row="0" Series="{Binding Series}" Style="{DynamicResource chart}">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis LabelFormatter="{Binding StringFormatter}"/>
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
      
-        <DataGrid MaxHeight="300" ItemsSource="{Binding Markets}" Margin="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource main_datagrid}">
+        <DataGrid ItemsSource="{Binding Markets}" Margin="20 0 20 0" Grid.Row="2" Style="{DynamicResource main_datagrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Binding="{Binding ExchangeId}">
                     <DataGridTextColumn.Header>

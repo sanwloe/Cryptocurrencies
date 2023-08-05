@@ -21,15 +21,15 @@ namespace Cryptocurrencies.Services
         }
         public async Task<CryptocurrencyCoinCap[]> GetCryptoCurrenciesAsync()
         {
-            return await _coinCapService.GetCryptocurrencies();
+            return await _coinCapService.GetCryptocurrenciesAsync();
         }
-        public async Task<CryptocurrencyExchangeCoinCap[]> GetMarkets(string cryptocurrency)
+        public async Task<CryptocurrencyExchangeCoinCap[]> GetMarketsAsync(string cryptocurrency)
         {
-            return await _coinCapService.GetMarkets(cryptocurrency);
+            return await _coinCapService.GetMarketsAsync(cryptocurrency);
         }
-        public async Task<InfoCryptocurrencyCoinCap[]> GetInfoCryptocurrency(string cryptocurrency,string? interval)
+        public async Task<InfoCryptocurrencyCoinCap[]> GetInfoCryptocurrencyAsync(string cryptocurrency,string? interval)
         {
-            return await _coinCapService.GetInfoAboutCryptocurrency(cryptocurrency,interval);
+            return await _coinCapService.GetInfoAboutCryptocurrencyAsync(cryptocurrency,interval);
         }
     }
 }
