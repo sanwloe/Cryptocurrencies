@@ -6,6 +6,17 @@
 
     <SolidColorBrush x:Key="bordercolor" Color="#14161A"/>
 
+    <Style x:Key="textblock_tools_chart" TargetType="TextBlock">
+        <Setter Property="Margin" Value="10 0 10 0"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="textbox_findelements" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
+        <Setter Property="Margin" Value="50 10 0 20"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Width" Value="400"/>
+    </Style>
+    
     <Style x:Key="textblock_infocryptocurrency_header" TargetType="TextBlock">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="16"/>

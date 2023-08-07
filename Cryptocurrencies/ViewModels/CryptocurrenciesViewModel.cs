@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Cryptocurrencies.Managers;
 using Cryptocurrencies.Models;
 using Cryptocurrencies.Services;
@@ -36,6 +37,27 @@ namespace Cryptocurrencies.ViewModels
             {
                 _coinCaps = value;
                 OnPropertyChanged(nameof(CoinCaps));
+            }
+        }
+        private string _searchKey;
+        public string SearchKey
+        {
+            get
+            {
+                return _searchKey;
+            }
+            set 
+            {
+                if(value == _searchKey) 
+                {
+                    _searchKey = value;
+                }
+                else if(value != null) 
+                {
+                    _searchKey = value;
+                    var result = CoinCaps.OrderBy(x => x.Id.StartsWith(_searchKey)).Reverse();          
+                    CoinCaps = new(result);
+                }
             }
         }
         private async void Initialize()

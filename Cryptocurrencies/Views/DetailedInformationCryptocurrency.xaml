@@ -20,11 +20,28 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.8*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{DynamicResource textblock_tools_chart}" Text="Інтервал"/>
+                <ComboBox>
+                    <ComboBoxItem Content="1 день"/>
+                    <ComboBoxItem IsSelected="True" Content="12 годин"/>
+                    <ComboBoxItem Content="6 годин"/>
+                    <ComboBoxItem Content="2 години"/>
+                    <ComboBoxItem Content="1 година"/>
+                    <ComboBoxItem Content="30 хвилин"/>
+                    <ComboBoxItem Content="1 хвилина"/>
+                </ComboBox>
+            </StackPanel>
+            
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="2">
             <StackPanel Style="{DynamicResource stackinfocryptocurrency}">
                 <TextBlock Style="{DynamicResource textblock_infocryptocurrency_header}" Text="Ціна : "/>
                 <TextBlock Style="{DynamicResource textblock_infocryptocurrency}" Text="{Binding Coin.PriceUsd}"/>
@@ -49,7 +66,7 @@
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
      
-        <DataGrid ItemsSource="{Binding Markets}" Margin="20 0 20 0" Grid.Row="2" Style="{DynamicResource main_datagrid}">
+        <DataGrid ItemsSource="{Binding Markets}" Margin="20 0 20 0" Grid.Row="3" Style="{DynamicResource main_datagrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Binding="{Binding ExchangeId}">
                     <DataGridTextColumn.Header>

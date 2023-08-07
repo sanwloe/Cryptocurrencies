@@ -20,12 +20,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Style="{DynamicResource textblock_header}" Text="Криптовалюти"/>
 
-        <DataGrid x:Name="datagrid" ItemsSource="{Binding CoinCaps}" Grid.Row="1" Style="{DynamicResource main_datagrid}">
+        <TextBox Text="{Binding SearchKey,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Style="{DynamicResource textbox_findelements}"/>
+
+        <DataGrid x:Name="datagrid" ItemsSource="{Binding CoinCaps}" Grid.Row="2" Style="{DynamicResource main_datagrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Width="*">
                     <DataGridTextColumn.Header>
